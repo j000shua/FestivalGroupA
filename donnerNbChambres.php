@@ -1,24 +1,9 @@
-<?
-
+<?php
+$nomtitre = '';
 include("_debut.inc.php");
 include("_gestionBase.inc.php"); 
 include("_controlesEtGestionErreurs.inc.php");
-
-// CONNEXION AU SERVEUR MYSQL PUIS SÉLECTION DE LA BASE DE DONNÉES festival
-
-$connexion=connect();
-if (!$connexion)
-{
-   ajouterErreur("Echec de la connexion au serveur MySql");
-   afficherErreurs();
-   exit();
-}
-if (!selectBase($connexion))
-{
-   ajouterErreur("La base de données festival est inexistante ou non accessible");
-   afficherErreurs();
-   exit();
-}
+include("_connexion-PDO.inc.php");
 
 // SÉLECTIONNER LE NOMBRE DE CHAMBRES SOUHAITÉES
 
@@ -31,7 +16,7 @@ echo "
 	<input type='hidden' value='validerModifAttrib' name='action'>
    <input type='hidden' value='$idEtab' name='idEtab'>
    <input type='hidden' value='$idGroupe' name='idGroupe'>";
-   $nomGroupe=obtenirNomGroupe($connexion, $idGroupe);
+   $nomGroupe=obtenirNomGroupe($dbh, $idGroupe);
    
    echo "
    <br><center><h5>Combien de chambres souhaitez-vous pour le 

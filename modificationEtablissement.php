@@ -1,24 +1,9 @@
-<?
-
+<?php
+$nomtitre = 'modifier';
 include("_debut.inc.php");
 include("_gestionBase.inc.php"); 
 include("_controlesEtGestionErreurs.inc.php");
-
-// CONNEXION AU SERVEUR MYSQL PUIS SÉLECTION DE LA BASE DE DONNÉES festival
-
-$connexion=connect();
-if (!$connexion)
-{
-   ajouterErreur("Echec de la connexion au serveur MySql");
-   afficherErreurs();
-   exit();
-}
-if (!selectBase($connexion))
-{
-   ajouterErreur("La base de données festival est inexistante ou non accessible");
-   afficherErreurs();
-   exit();
-}
+include("_connexion-PDO.inc.php");
 
 // MODIFIER UN ÉTABLISSEMENT 
 
@@ -33,7 +18,7 @@ $id=$_REQUEST['id'];
 // affiche les valeurs précédemment contenues dans le formulaire
 if ($action=='demanderModifEtab')
 {
-   $lgEtab=obtenirDetailEtablissement($connexion, $id);
+   $lgEtab=obtenirDetailEtablissement($dbh, $id);
   
    $nom=$lgEtab['nom'];
    $adresseRue=$lgEtab['adresseRue'];
@@ -61,11 +46,11 @@ else
    $prenomResponsable=$_REQUEST['prenomResponsable'];
    $nombreChambresOffertes=$_REQUEST['nombreChambresOffertes'];
 
-   verifierDonneesEtabM($connexion, $id, $nom, $adresseRue, $codePostal, $ville,  
+   verifierDonneesEtabM($dbh, $id, $nom, $adresseRue, $codePostal, $ville,  
                         $tel, $nomResponsable, $nombreChambresOffertes);      
    if (nbErreurs()==0)
    {        
-      modifierEtablissement($connexion, $id, $nom, $adresseRue, $codePostal, $ville, 
+      modifierEtablissement($dbh, $id, $nom, $adresseRue, $codePostal, $ville, 
                             $tel, $adresseElectronique, $type, $civiliteResponsable, 
                             $nomResponsable, $prenomResponsable, $nombreChambresOffertes);
    }
@@ -169,7 +154,7 @@ echo "
    echo "
    <table align='center' cellspacing='15' cellpadding='0'>
       <tr>
-         <td align='right'><input type='submit' value='Valider' name='valider'>
+         <td align='right'><input type='submit' type='reset' value='Valider' name='valider'>
          </td>
          <td align='left'><input type='reset' value='Annuler' name='annuler'>
          </td>

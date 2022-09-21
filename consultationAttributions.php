@@ -1,30 +1,16 @@
-<?
-
+<?php
+$nomtitre = 'attributions';
 include("_debut.inc.php");
 include("_gestionBase.inc.php"); 
 include("_controlesEtGestionErreurs.inc.php");
+include("_connexion-PDO.inc.php");
 
-// CONNEXION AU SERVEUR MYSQL PUIS SÉLECTION DE LA BASE DE DONNÉES festival
-
-$connexion=connect();
-if (!$connexion)
-{
-   ajouterErreur("Echec de la connexion au serveur MySql");
-   afficherErreurs();
-   exit();
-}
-if (!selectBase($connexion))
-{
-   ajouterErreur("La base de données festival est inexistante ou non accessible");
-   afficherErreurs();
-   exit();
-}
 
 // CONSULTER LES ATTRIBUTIONS DE TOUS LES ÉTABLISSEMENTS
 
 // IL FAUT QU'IL Y AIT AU MOINS UN ÉTABLISSEMENT OFFRANT DES CHAMBRES POUR  
 // AFFICHER LE LIEN VERS LA MODIFICATION
-$nbEtab=obtenirNbEtabOffrantChambres($connexion);
+$nbEtab=obtenirNbEtabOffrantChambres($dbh);
 if ($nbEtab!=0)
 {
    echo "
@@ -36,8 +22,8 @@ if ($nbEtab!=0)
    // POUR CHAQUE ÉTABLISSEMENT : AFFICHAGE D'UN TABLEAU COMPORTANT 2 LIGNES 
    // D'EN-TÊTE ET LE DÉTAIL DES ATTRIBUTIONS
    $req=obtenirReqEtablissementsAyantChambresAttribuées();
-   $rsEtab=mysql_query($req, $connexion);
-   $lgEtab=mysql_fetch_array($rsEtab);
+   $rsEtab= $dbh->query($req);
+   $lgEtab=$rsEtab->fetch(PDO::FETCH_ASSOC);
    // BOUCLE SUR LES ÉTABLISSEMENTS AYANT DÉJÀ DES CHAMBRES ATTRIBUÉES
    while($lgEtab!=FALSE)
    {
@@ -49,7 +35,7 @@ if ($nbEtab!=0)
       class='tabQuadrille'>";
       
       $nbOffre=$lgEtab["nombreChambresOffertes"];
-      $nbOccup=obtenirNbOccup($connexion, $idEtab);
+      $nbOccup=obtenirNbOccup($dbh, $idEtab);
       // Calcul du nombre de chambres libres dans l'établissement
       $nbChLib = $nbOffre - $nbOccup;
       
@@ -72,29 +58,30 @@ if ($nbEtab!=0)
       // AFFICHAGE DU DÉTAIL DES ATTRIBUTIONS : UNE LIGNE PAR GROUPE AFFECTÉ 
       // DANS L'ÉTABLISSEMENT       
       $req=obtenirReqGroupesEtab($idEtab);
-      $rsGroupe=mysql_query($req, $connexion);
-      $lgGroupe=mysql_fetch_array($rsGroupe);
+      $rsGroupe= $dbh->query($req);
+      $lgGroupe=$rsGroupe->fetch(PDO::FETCH_ASSOC);
                
       // BOUCLE SUR LES GROUPES (CHAQUE GROUPE EST AFFICHÉ EN LIGNE)
-      while($lgGroupe!=FALSE)
+      while($lgGroupe)//!=FALSE)
       {
          $idGroupe=$lgGroupe['id'];
          $nomGroupe=$lgGroupe['nom'];
+         $nbpers = $lgGroupe['nombrePersonnes'];
          echo "
          <tr class='ligneTabQuad'>
-            <td width='65%' align='left'>$nomGroupe</td>";
+            <td width='65%' align='left'>$nomGroupe ($nbpers membres)</td>";
          // On recherche si des chambres ont déjà été attribuées à ce groupe
          // dans l'établissement
-         $nbOccupGroupe=obtenirNbOccupGroupe($connexion, $idEtab, $idGroupe);
+         $nbOccupGroupe=obtenirNbOccupGroupe($dbh, $idEtab, $idGroupe);
          echo "
-            <td width='35%' align='left'>$nbOccupGroupe</td>
+            <td width='35%' align='left'>$nbOccupGroupe </td>
          </tr>";
-         $lgGroupe=mysql_fetch_array($rsGroupe);
-      } // Fin de la boucle sur les groupes
+         $lgGroupe=$rsGroupe->fetch(PDO::FETCH_ASSOC);
+      } // Fin de la boucle sur les groupes  
       
       echo "
       </table><br>";
-      $lgEtab=mysql_fetch_array($rsEtab);
+      $lgEtab=$rsEtab->fetch(PDO::FETCH_ASSOC);
    } // Fin de la boucle sur les établissements
 }
 

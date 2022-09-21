@@ -1,30 +1,16 @@
-<?
-
+<?php
+$nomtitre = 'détails';
 include("_debut.inc.php");
 include("_gestionBase.inc.php"); 
 include("_controlesEtGestionErreurs.inc.php");
+include_once("_connexion-PDO.inc.php");
 
-// CONNEXION AU SERVEUR MYSQL PUIS SÉLECTION DE LA BASE DE DONNÉES festival
-
-$connexion=connect();
-if (!$connexion)
-{
-   ajouterErreur("Echec de la connexion au serveur MySql");
-   afficherErreurs();
-   exit();
-}
-if (!selectBase($connexion))
-{
-   ajouterErreur("La base de données festival est inexistante ou non accessible");
-   afficherErreurs();
-   exit();
-}
 
 $id=$_REQUEST['id'];  
 
 // OBTENIR LE DÉTAIL DE L'ÉTABLISSEMENT SÉLECTIONNÉ
 
-$lgEtab=obtenirDetailEtablissement($connexion, $id);
+$lgEtab=obtenirDetailEtablissement($dbh, $id);
 
 $nom=$lgEtab['nom'];
 $adresseRue=$lgEtab['adresseRue'];

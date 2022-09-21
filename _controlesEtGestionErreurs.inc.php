@@ -1,6 +1,14 @@
-<?
+<?php
 
 // FONCTIONS DE CONTRÔLE DE SAISIE
+
+// Si $tel a une longueur de 10 caractères et est de type entier, on 
+// considère qu'il s'agit d'un tel
+function estUnTel($tel)
+{
+   // Le code postal doit comporter 10 chiffres
+   return strlen($tel)== 10 && estEntier($tel);
+}
 
 // Si $codePostal a une longueur de 5 caractères et est de type entier, on 
 // considère qu'il s'agit d'un code postal
@@ -14,14 +22,14 @@ function estUnCp($codePostal)
 // la fonction retourne vrai
 function estEntier($valeur)
 {
-   return !ereg("[^0-9]", $valeur);
+   return !preg_match("%[^0-9]%", $valeur);
 }
 
 // Si la valeur transmise ne contient pas d'autres caractères que des chiffres  
 // et des lettres non accentuées, la fonction retourne vrai
 function estChiffresOuEtLettres($valeur)
 {
-   return !ereg("[^a-zA-Z0-9]", $valeur);
+   return !preg_match("%[^a-zA-Z0-9]%", $valeur);
 }
 
 // Fonction qui vérifie la saisie lors de la modification d'un établissement. 
@@ -47,6 +55,10 @@ function verifierDonneesEtabM($connexion, $id, $nom, $adresseRue, $codePostal,
    {
       ajouterErreur
       ("La valeur de l'offre est non entière ou inférieure aux attributions effectuées");
+   }
+   if ($tel != "" && !estUnTel($tel))
+   {
+      ajouterErreur("Le numero de telephone dois etre composé de 10 chiffres");
    }
 }
 
@@ -88,6 +100,10 @@ function verifierDonneesEtabC($connexion, $id, $nom, $adresseRue, $codePostal,
    if ($nombreChambresOffertes!="" && !estEntier($nombreChambresOffertes)) 
    {
       ajouterErreur ("La valeur de l'offre doit être un entier");
+   }
+   if ($tel != "" && !estUnTel($tel))
+   {
+      ajouterErreur("Le numero de telephone dois etre composé de 10 chiffres");
    }
 }
 
