@@ -4,13 +4,13 @@
 
 //identifiant et mdp mysql
 $user = 'root';
-$pswd = '';
+$pswd = 'root';
 
 //hote de l'application
 $host = 'localhost';
 
 //nom de la base de donnée
-$bdd = 'fest';
+$bdd = 'festival';
 
 //data source name, soit la definition de l'hote et du nom de la base
 $dsn = "mysql:$host=localhost;dbname=$bdd";
@@ -24,7 +24,7 @@ try{
 
 } catch(PDOException $e) {
 
-    echo "erreur : ".$e->getMessage()."<br/>";
+    echo "erreur de connexionp : ".$e->getMessage()."<br/>";
     die();
 
 }

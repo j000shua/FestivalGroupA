@@ -1,4 +1,3 @@
-
 DELETE FROM Etablissement;
 DELETE FROM Groupe;
 DELETE FROM Attribution;
