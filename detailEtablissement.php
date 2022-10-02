@@ -1,9 +1,9 @@
 <?php
 $nomtitre = 'détails';
-include("_debut.inc.php");
+include("vues/vueHeader.php");
 include("_gestionBase.inc.php"); 
 include("_controlesEtGestionErreurs.inc.php");
-include_once("_connexion-PDO.inc.php");
+include_once("models/modelConnexion.php");
 
 
 $id=$_REQUEST['id'];  

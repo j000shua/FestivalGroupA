@@ -3,8 +3,7 @@
 <!-- TITRE ET MENUS -->
 <html lang="fr">
 <head>
-<?php
-echo "<title>Sp'Or - $nomtitre </title>"; ?>
+<?= "<title>Sp'Or - $titre </title>"; ?>
 <meta http-equiv="Content-Language" content="fr">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/cssGeneral.css" rel="stylesheet" type="text/css">
@@ -23,42 +22,16 @@ echo "<title>Sp'Or - $nomtitre </title>"; ?>
 
 <!--  Tableau contenant les menus -->
 
-<?php
-
-function affmenu($lacc, $leta, $latt)
-{
-echo "
 <table width='80%' cellpadding='0' cellspacing='0' class='tabMenu' align='center'>
    <tr>
-      <td class='menu'><a class='$lacc' href='index.php'>Accueil</a></td>
-      <td class='menu' ><a class='$leta' href='listeEtablissements.php' >
+      <td class='menu'><a href='index.php'>Accueil</a></td>
+      <td class='menu' ><a href='listeEtablissements.php' >
       Gestion établissements</a></td>
-      <td class='menu'><a class='$latt' href='consultationAttributions.php'>
+      <td class='menu'><a href='consultationAttributions.php'>
       Attributions chambres</a></td>
    </tr>
 </table>
-<br>";
-}
+<br>"
 
-switch($nomtitre) {
-   case "accueil":
-      affmenu("active","","");
-      break;
-   case "établissements":
-      affmenu("","active","");
-      break;
-   case "détails":
-      affmenu("","active","");
-      break;
-   case "modifier":
-      affmenu("","active","");
-      break;
-   case "créer":
-      affmenu("","active","");
-      break;
-   case "attributions":
-      affmenu("","","active");
-      break;      
-}
 
-?>
+<?= $contenu ?>

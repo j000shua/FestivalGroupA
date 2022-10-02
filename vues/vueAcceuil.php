@@ -1,4 +1,6 @@
-<br> 
+<?php $titre = 'Accueil'; ?>
+
+<?php ob_start(); ?>
 <table width='80%' cellspacing='0' cellpadding='0' align='center'>
    <tr>  
       <td class='texteAccueil'>
@@ -30,3 +32,7 @@
       </td>
    </tr>
 </table>
+
+<?php $contenu = ob_get_clean(); ?>
+
+<?php require 'vueHeader.php'; ?>

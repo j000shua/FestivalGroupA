@@ -1,9 +1,9 @@
 <?php
 $nomtitre = 'établissements';
-include("_debut.inc.php");
+include("vues/vueHeader.php");
 include("_gestionBase.inc.php"); 
 include("_controlesEtGestionErreurs.inc.php");
-include("_connexion-PDO.inc.php");
+include("models/modelConnexion.php");
 
 
 //affichage avec pdo
