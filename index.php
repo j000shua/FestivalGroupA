@@ -1,6 +1,7 @@
 <?php 
 
-// Affichage
-require 'vues/vueAcceuil.php';
+require 'controllers/controller.php';
+
+accueil();
 
 ?>
