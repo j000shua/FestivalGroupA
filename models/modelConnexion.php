@@ -17,16 +17,20 @@ $dsn = "mysql:$host=localhost;dbname=$bdd";
 
 
 //connexion
-try{
 
-    $dbh = new PDO($dsn, $user, $pswd); //$dbh l'objet de notre bdd connecté à l'application
-    //echo "connexion pdo reussie (à retirer) <br/>";
+function getBDD()
+{
+    try{
 
-} catch(PDOException $e) {
-
-    echo "erreur de connexionp : ".$e->getMessage()."<br/>";
-    die();
-
+        return new PDO('mysql:localhost=localhost;dbname=festival', 'root', 'root'); //$dbh l'objet de notre bdd connecté à l'application
+        //echo "connexion pdo reussie (à retirer) <br/>";
+    
+    } catch(PDOException $e) {
+    
+        echo "erreur de connexionp : ".$e->getMessage()."<br/>";
+        die();
+    
+    }
 }
 
 ?>

@@ -2,6 +2,21 @@
 
 require 'controllers/controller.php';
 
-accueil();
+if(!isset($_GET['action']))
+    accueil();
+
+switch($_GET['action']){
+    case "etablissements" :
+        etab();
+        break;
+    case "attributions" :
+        attrib();
+        break;
+    default :
+        //accueil();
+        break;
+       
+}
+//accueil();
 
 ?>
