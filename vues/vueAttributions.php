@@ -4,10 +4,13 @@
 
 <!-- CONTENU DE LA VUE AVEC LES VARIABLES PHP -->
 
+    <table width='75%' cellspacing='0' cellpadding='0' align='center'>
+        <tr><td>
+        <a href='index.php?action=modifAttributions'>
+        Effectuer ou modifier les attributions</a></td></tr>
+    </table><br><br>
     
-    <?php $i=0; ?>
-    
-    <?php foreach($etabs as $etab): ?>
+    <?php $i=0; foreach($etabs as $etab): ?>
 
         <table width='75%' cellspacing='0' cellpadding='0' align='center' class='tabQuadrille'>
 
@@ -24,6 +27,7 @@
 
             <tr class='ligneTabQuad'>
                 <td width='65%' align='left'> <?=$groupe['nom']." (".$groupe['nombrePersonnes']." membres)"?></td>
+                <td width='65%' align='left'> <?=$groupe['nombreChambres']?></td>
             </tr>
 
         <?php endforeach ?>

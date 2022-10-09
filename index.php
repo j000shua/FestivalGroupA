@@ -13,6 +13,9 @@ else
         case "attributions" :
             attrib();
             break;
+        default:
+            echo "erreur dans l'action demandée"; //FAIRE UNE VUE ET CONTROLLER ERREUR PLUS TARD
+            break;
         
     }
 
