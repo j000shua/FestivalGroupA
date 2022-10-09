@@ -27,8 +27,8 @@ function getBDD()
     
     } catch(PDOException $e) {
     
-        echo "erreur de connexionp : ".$e->getMessage()."<br/>";
-        die();
+        return "erreur de connexionp : ".$e->getMessage()."<br/>";
+        
     
     }
 }

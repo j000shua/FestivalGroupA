@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<!-- CONTENU DE LA VUE AVEC LES VARIABLES PHP !>
+<!-- CONTENU DE LA VUE AVEC LES VARIABLES PHP -->
 
 
 

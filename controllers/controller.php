@@ -1,7 +1,7 @@
 <?php 
 
-//require 'models/modelConnexion.php';
 require 'models/modelGet.php';
+
 
 
 function accueil(){
@@ -11,6 +11,24 @@ function accueil(){
 function etab(){
     $etabs = getEtabs();
     require 'vues/vueEtablissements.php';
+}
+
+function attrib(){
+
+    if(count(getEtabsHebergeur()) == 0){
+        echo "il n'y a pas d'etablissements hebergeur :/";} //erreur a mettre dans la vue plus tard
+    else
+        $etabs = getEtabsAyantAttrib();
+
+            $i = 0;
+            foreach($etabs as $etab):
+                
+                $groupes[$i] = getAttribsFromEtab($etab['id']);
+                $i++;
+                
+            endforeach;
+
+        require 'vues/vueAttributions.php';
 }
 
 ?>

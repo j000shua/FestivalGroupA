@@ -1,0 +1,14 @@
+<?php
+
+function getX(){
+
+    $bdd = getBDD();
+
+    $reqX = $bdd->query("//SQL//");
+
+    $X = $reqX->fetchAll(PDO::FETCH_ASSOC);
+
+    return $X;
+}
+
+?>

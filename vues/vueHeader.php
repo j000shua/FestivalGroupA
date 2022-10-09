@@ -15,7 +15,7 @@
    <tr> 
       <td class="titre">Festival Sp'Or <br>
       <span id="texteNiveau2" class="texteNiveau2">
-      H&eacute;bergement des équipes</span><br>&nbsp;
+      Hébergement des équipes</span><br>&nbsp;
       </td>
    </tr>
 </table>
@@ -27,11 +27,11 @@
       <td class='menu'><a href='index.php'>Accueil</a></td>
       <td class='menu' ><a href='index.php?action=etablissements' >
       Gestion établissements</a></td>
-      <td class='menu'><a href='consultationAttributions.php'>
+      <td class='menu'><a href='index.php?action=attributions'>
       Attributions chambres</a></td>
    </tr>
 </table>
-<br>"
+<br>
 
 
 <?= $contenu ?>
