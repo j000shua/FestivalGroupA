@@ -31,4 +31,9 @@ function attrib(){
         require 'vues/vueAttributions.php';
 }
 
+function etabDetail($id){
+    $etab = getEtabsDetails($id);
+    require 'vues/vueDetail.php';
+}
+
 ?>

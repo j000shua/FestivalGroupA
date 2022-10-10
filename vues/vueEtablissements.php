@@ -13,9 +13,15 @@
       <?php foreach ($etabs as $etab): ?>
          
          <tr class='ligneTabNonQuad'>
-            <td> <?= $etab['nom']?> </td>
-         </tr>
+            <td> <?= $etab['nom']."-".$etab['id']?> </td>
 
+            <td width='16%' align='center'> 
+            <a href='index.php?action=details&id=<?= $etab['id'];?>'>Voir détail</a>
+            </td>
+
+            <td width='16%' align='center'> 
+            <a href='index.php?action=modifier&id=<?= $etab['id'];?>'>Modifier</a></td>
+         </tr>
       <?php endforeach ?>
 
    </table>
