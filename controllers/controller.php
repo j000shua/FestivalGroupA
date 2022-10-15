@@ -36,4 +36,24 @@ function etabDetail($id){
     require 'vues/vueDetail.php';
 }
 
+function modifAttrib(){
+    $etabs = getEtabsHebergeur();
+    $groupes = getGroupes();
+    
+    $i = 0;
+    foreach($groupes as $groupe):
+
+        foreach($etabs as $etab):
+
+            $attribs[$i] = getNbAttrib($etab['id'], $groupe['id']);
+            $i++;
+
+        endforeach;
+
+    endforeach;
+
+    require 'vues/vueModifAttributions.php';
+}
+
+
 ?>

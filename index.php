@@ -32,10 +32,10 @@ else
             attrib();
             break;
 
-        case "modifAttri":
-            modifAttri($_GET['id']);
+        case "modifAttributions":
+            modifAttrib();
             break;
-            
+
         default:
             echo "erreur dans l'action demandée"; //FAIRE UNE VUE ET CONTROLLER ERREUR PLUS TARD
             break;

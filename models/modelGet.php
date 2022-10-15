@@ -41,4 +41,30 @@ function getAttribsFromEtab($id){
     return $Attribs;
 }
 
+function getGroupes(){
+
+    $bdd = getBDD();
+
+    $reqGroupes = $bdd->query("select id, nom, nombrePersonnes from Groupe where hebergement='O' order by id");
+
+    $groupes = $reqGroupes->fetchAll(PDO::FETCH_ASSOC);
+
+    return $groupes;
+}
+
+function getNbAttrib($idEtab, $idGroupe){
+
+    $bdd = getBDD();
+
+    $reqNbAttrib = $bdd->query("select nombreChambres from attribution where idEtab = '$idEtab' AND idGroupe = '$idGroupe';");
+
+    $nbAttrib = $reqNbAttrib->fetch(PDO::FETCH_ASSOC);
+    //print_r($nbAttrib);
+
+    if (isset($nbAttrib['nombreChambres']))
+        return $nbAttrib['nombreChambres'];
+    else
+        return 0;
+}
+
 ?>
