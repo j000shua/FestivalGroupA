@@ -20,11 +20,11 @@ else
             modifEtab($_GET['id']);
             break;
 
-        case "creationEtab":
+        case "creationEtab": //////
             creerEtab();
             break;
 
-        case "suppEtab":
+        case "suppEtab": //////
             suppEtab();
             break;
 
@@ -34,6 +34,10 @@ else
 
         case "modifAttributions":
             modifAttrib();
+            break;
+
+        case "nbAttributions":
+            nbAttrib($_GET['idEtab'],$_GET['idGroupe']);
             break;
 
         default:

@@ -41,6 +41,15 @@ function getAttribsFromEtab($id){
     return $Attribs;
 }
 
+function getNbChambresRestantes($id){                //etablissements qui ont déja des attributions (pas vides)
+    $bdd = getBDD();
+    $req = $bdd->query("select sum(nombreChambresOffertes - (select sum( nombreChambres ) 
+     from attribution where idEtab='$id' )) as nb from etablissement where id='$id';");
+    $nb = $req->fetch(PDO::FETCH_ASSOC);
+    return $nb['nb'];
+}
+
+
 function getGroupes(){
 
     $bdd = getBDD();
@@ -50,6 +59,13 @@ function getGroupes(){
     $groupes = $reqGroupes->fetchAll(PDO::FETCH_ASSOC);
 
     return $groupes;
+}
+
+function getGroupeDetails($id){
+    $bdd = getBDD();
+    $reqGroupe = $bdd->query("select * from Groupe where id = '$id'");
+    $Groupe = $reqGroupe->fetch(PDO::FETCH_ASSOC);
+    return $Groupe;
 }
 
 function getNbAttrib($idEtab, $idGroupe){

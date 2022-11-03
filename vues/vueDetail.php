@@ -1,4 +1,4 @@
-<?php $titre = 'Details'; ?>
+<?php $titre = $etab['nom']; ?>
 
 <?php ob_start(); ?>
 <table width='60%' cellspacing='0' cellpadding='0' align='center' class='tabNonQuadrille'>
