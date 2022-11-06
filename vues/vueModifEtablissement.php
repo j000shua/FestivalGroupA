@@ -3,7 +3,6 @@
 
 <!-- CONTENU DE LA VUE AVEC LES VARIABLES PHP -->
 <table width='85%' cellspacing='0' cellpadding='0' align='center' class='tabNonQuadrille'>
-    <p>test</p>
 </table>
 
 <table align='center'>

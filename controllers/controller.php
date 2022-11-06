@@ -20,11 +20,6 @@ function etabDetail($id){  // action details
     require 'vues/vueDetailEtablissement.php';
 }
 
-function modifEtab($id){ // action modifier Etablissement
-
-    require 'vues/vueModifEtablissement.php';
-}
-
 ///////// ATTRIBUTIONS //////////////
 
 function attrib(){  // action attributions
@@ -95,7 +90,6 @@ function nbAttrib($idEtab, $idGroupe){
     endif;
     
     require 'vues/vueNombreAttributions.php';
-}
-    
+}    
 
 ?>
