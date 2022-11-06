@@ -17,7 +17,7 @@ function etab(){ // action etablissement
 
 function etabDetail($id){  // action details
     $etab = getEtabsDetails($id);
-    require 'vues/vueDetail.php';
+    require 'vues/vueDetailEtablissement.php';
 }
 
 function modifEtab($id){ // action modifier Etablissement
