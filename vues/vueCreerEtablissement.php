@@ -1,0 +1,7 @@
+<?php $titre = 'Création Établissement'; ?>
+<?php ob_start(); ?>
+
+<!-- CONTENU DE LA VUE AVEC LES VARIABLES PHP -->
+
+<?php $contenu = ob_get_clean(); ?>
+<?php require 'vueHeader.php'; ?>

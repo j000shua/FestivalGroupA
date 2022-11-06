@@ -24,6 +24,9 @@
          </tr>
       <?php endforeach ?>
 
+      <td width='16%' align='center'> 
+      <a href='index.php?action=creer'>Modifier</a></td>
+
    </table>
 
 <?php $contenu = ob_get_clean(); ?>
