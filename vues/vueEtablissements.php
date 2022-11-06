@@ -25,8 +25,9 @@
       <?php endforeach ?>
 
    </table>
-   
-   <a align='center' href='index.php?action=creer'>Créer</a>
+   <p align='center'>
+      <a href='index.php?action=creer'>Créer</a>
+   </p>
 
 <?php $contenu = ob_get_clean(); ?>
 
