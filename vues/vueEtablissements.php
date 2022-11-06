@@ -26,9 +26,7 @@
 
    </table>
    
-   <td width='16%' align='center'> 
-      <a href='index.php?action=creer'>Créer</a>
-   </td>
+   <a align='center' href='index.php?action=creer'>Créer</a>
 
 <?php $contenu = ob_get_clean(); ?>
 
