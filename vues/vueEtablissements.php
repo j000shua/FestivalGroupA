@@ -20,13 +20,13 @@
             </td>
 
             <td width='16%' align='center'> 
-            <a href='index.php?action=modifier&id=<?= $etab['id'];?>'>Modifier</a></td>
+            <a href='index.php?action=modifEtab&id=<?= $etab['id'];?>'>Modifier</a></td>
          </tr>
       <?php endforeach ?>
 
    </table>
    <p align='center'>
-      <a href='index.php?action=creer'>Créer</a>
+      <a href='index.php?action=creationEtab'>Créer</a>
    </p>
 
 <?php $contenu = ob_get_clean(); ?>

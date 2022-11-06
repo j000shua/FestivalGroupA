@@ -20,6 +20,35 @@ function etabDetail($id){  // action details
     require 'vues/vueDetailEtablissement.php';
 }
 
+function modifEtab($id){
+
+    $tabCivilite=array("M.","Mme","Melle");
+    
+
+    if($_REQUEST['action'] == "validerModifEtab"){
+        updateEtab($id, $_REQUEST['nom'], $_REQUEST['adresseRue'], $_REQUEST['codePostal'], $_REQUEST['ville'], $_REQUEST['tel'],
+         $_REQUEST['adresseElectronique'], $_REQUEST['type'], $_REQUEST['civiliteResponsable'], 
+         $_REQUEST['nomResponsable'], $_REQUEST['prenomResponsable'], $_REQUEST['nombreChambresOffertes']);
+    }
+
+    $etab = getEtabsDetails($id);
+
+    require "vues/vueModifEtablissement.php";
+}
+
+function creerEtab(){
+
+    $tabCivilite=array("M.","Mme","Melle");
+
+    if($_REQUEST['action'] == "validerCreEtab"){
+       createEtab($_REQUEST['id'], $_REQUEST['nom'], $_REQUEST['adresseRue'], $_REQUEST['codePostal'], $_REQUEST['ville'], $_REQUEST['tel'],
+         $_REQUEST['adresseElectronique'], $_REQUEST['type'], $_REQUEST['civiliteResponsable'], 
+         $_REQUEST['nomResponsable'], $_REQUEST['prenomResponsable'], $_REQUEST['nombreChambresOffertes']);
+    }
+
+    require "vues/vueCreerEtablissement.php";
+}
+
 ///////// ATTRIBUTIONS //////////////
 
 function attrib(){  // action attributions

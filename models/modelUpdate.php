@@ -17,4 +17,35 @@ function updateAttrib($idEtab, $idGroupe, $nbChambres, $mode){
     }
 }
 
+function updateEtab($id, $nom, $adresseRue, $codePostal, 
+                               $ville, $tel, $adresseElectronique, $type, 
+                               $civiliteResponsable, $nomResponsable, 
+                               $prenomResponsable, $nombreChambresOffertes)
+{  
+
+    $bdd = getBDD();
+  
+   $req="update Etablissement set nom='$nom',adresseRue='$adresseRue',
+         codePostal='$codePostal',ville='$ville',tel='$tel',
+         adresseElectronique='$adresseElectronique',type='$type',
+         civiliteResponsable='$civiliteResponsable',nomResponsable=
+         '$nomResponsable',prenomResponsable='$prenomResponsable',
+         nombreChambresOffertes='$nombreChambresOffertes' where id='$id'";
+   
+   $bdd->exec($req);
+}
+
+function createEtab($id, $nom, $adresseRue, $codePostal, $ville, $tel, $adresseElectronique, $type, 
+$civiliteResponsable, $nomResponsable, $prenomResponsable, $nombreChambresOffertes){
+
+    $bdd = getBDD();
+
+    $req = "insert into Etablissement values ('$id', '$nom', '$adresseRue', 
+    '$codePostal', '$ville', '$tel', '$adresseElectronique', '$type', 
+    '$civiliteResponsable', '$nomResponsable', '$prenomResponsable',
+    '$nombreChambresOffertes'";
+
+    $bdd->exec($req);
+}
+
 ?>
