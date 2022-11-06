@@ -23,7 +23,7 @@
             <td width='25%'><?= $groupe['nom']." - ".$groupe['id'];?></td>
 
             <?php foreach($etabs as $etab): ?>
-                <td class='reserve'> 
+                <td class='reserve'>
 
                     <?php if($attribs[$i] == 0 && getNbChambresRestantes($etab['id']) == 0): //ATTENTION ICI ON APPELE UNE FONCTION DU MODELE CA NE RESPECTE PAS LES PRINCIPES DU MVC, PENSER A TROUVER UN TRUC MIEUX?> 
                     - <?php else: ?>     
