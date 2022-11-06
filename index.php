@@ -3,6 +3,14 @@
 require 'controllers/controller.php';
 
 
+/* 
+
+/!\ ATTENTION, il n'y pas encore la gestion des erreurs de saisies sur les creations et modifications d'etablissements
+/!\ ATTENTION, actuellement un etablissement peut etre supprimer juste en entrant l'url 'index.php?action=suppEtab&id=[id de l'etab]&valide=oui'
+ + les etablissements qui ont des attributions peuvent actuellement etre supprimer !
+
+*/
+
 if(!isset($_GET['action']))
     accueil();
 else
@@ -20,12 +28,12 @@ else
             modifEtab($_GET['id']);
             break;
 
-        case "creationEtab": //////
+        case "creationEtab":
             creerEtab();
             break;
 
         case "suppEtab": //////
-            suppEtab();
+            suppEtab($_GET['id']);
             break;
 
         case "attributions" :

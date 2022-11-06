@@ -43,7 +43,15 @@ $civiliteResponsable, $nomResponsable, $prenomResponsable, $nombreChambresOffert
     $req = "insert into Etablissement values ('$id', '$nom', '$adresseRue', 
     '$codePostal', '$ville', '$tel', '$adresseElectronique', '$type', 
     '$civiliteResponsable', '$nomResponsable', '$prenomResponsable',
-    '$nombreChambresOffertes'";
+    '$nombreChambresOffertes')";
+
+    $bdd->exec($req);
+}
+
+function deleteEtab($id){
+    $bdd = getBDD();
+
+    $req="delete from Etablissement where id='$id'";
 
     $bdd->exec($req);
 }

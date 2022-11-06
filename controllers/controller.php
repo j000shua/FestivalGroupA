@@ -11,7 +11,15 @@ function accueil(){ //index sans action
 ///////// ETABLISSEMENTS ////////////
 
 function etab(){ // action etablissement
+
+    if($_REQUEST['action'] == "validerCreEtab"){
+        createEtab($_REQUEST['id'], $_REQUEST['nom'], $_REQUEST['adresseRue'], $_REQUEST['codePostal'], $_REQUEST['ville'], $_REQUEST['tel'],
+          $_REQUEST['adresseElectronique'], $_REQUEST['type'], $_REQUEST['civiliteResponsable'], 
+          $_REQUEST['nomResponsable'], $_REQUEST['prenomResponsable'], $_REQUEST['nombreChambresOffertes']);
+    }
+
     $etabs = getEtabs();
+
     require 'vues/vueEtablissements.php';
 }
 
@@ -40,13 +48,21 @@ function creerEtab(){
 
     $tabCivilite=array("M.","Mme","Melle");
 
-    if($_REQUEST['action'] == "validerCreEtab"){
-       createEtab($_REQUEST['id'], $_REQUEST['nom'], $_REQUEST['adresseRue'], $_REQUEST['codePostal'], $_REQUEST['ville'], $_REQUEST['tel'],
-         $_REQUEST['adresseElectronique'], $_REQUEST['type'], $_REQUEST['civiliteResponsable'], 
-         $_REQUEST['nomResponsable'], $_REQUEST['prenomResponsable'], $_REQUEST['nombreChambresOffertes']);
+    require "vues/vueCreerEtablissement.php";
+}
+
+function suppEtab($id){
+
+    $etab = getEtabsDetails($id);
+
+    if(isset($_REQUEST['valide'])){
+        deleteEtab($id);
+        require 'vues/vueSuppressionValide.php';
+    }
+    else{
+        require "vues/vueSupprimerEtablissement.php";
     }
 
-    require "vues/vueCreerEtablissement.php";
 }
 
 ///////// ATTRIBUTIONS //////////////

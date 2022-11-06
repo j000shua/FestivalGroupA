@@ -72,7 +72,7 @@
             <td> <select name='civiliteResponsable'>
 
                <?php for ($i=0; $i<3; $i=$i+1)
-                        if ($tabCivilite[$i]==$civiliteResponsable) 
+                        if ($tabCivilite[$i]==$etab["civiliteResponsable"]) 
                         {
                            echo "<option selected>$tabCivilite[$i]</option>";
                         }

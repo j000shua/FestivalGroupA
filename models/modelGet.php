@@ -35,7 +35,7 @@ function getEtabsAyantAttrib(){                //etablissements qui ont déja de
 function getAttribsFromEtab($id){
 
     $bdd = getBDD();
-    $reqAttrib = $bdd->query("select distinct id, nom, nombrePersonnes, nombreChambres from Groupe, Attribution where 
+    $reqAttrib = $bdd->query("select distinct id, nom, nombrePersonnes, nombreChambres, nomPays from Groupe, Attribution where 
     Attribution.idGroupe=Groupe.id and idEtab='$id'");
     $Attribs = $reqAttrib->fetchAll(PDO::FETCH_ASSOC);
     return $Attribs;
@@ -54,7 +54,7 @@ function getGroupes(){
 
     $bdd = getBDD();
 
-    $reqGroupes = $bdd->query("select id, nom, nombrePersonnes from Groupe where hebergement='O' order by id");
+    $reqGroupes = $bdd->query("select id, nom, nombrePersonnes, nomPays from Groupe where hebergement='O' order by id");
 
     $groupes = $reqGroupes->fetchAll(PDO::FETCH_ASSOC);
 

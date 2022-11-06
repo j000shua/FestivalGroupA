@@ -20,7 +20,7 @@
 
         <tr class='ligneTabQuad'>
 
-            <td width='25%'><?= $groupe['nom']." - ".$groupe['id'];?></td>
+            <td width='25%'><?= '['.$groupe['nomPays'].'] '.$groupe['nom']." - ".$groupe['id'];?></td>
 
             <?php foreach($etabs as $etab): ?>
                 <td class='reserve'>

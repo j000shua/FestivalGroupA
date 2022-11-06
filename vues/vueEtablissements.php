@@ -21,6 +21,9 @@
 
             <td width='16%' align='center'> 
             <a href='index.php?action=modifEtab&id=<?= $etab['id'];?>'>Modifier</a></td>
+
+            <td width='16%' align='center'> 
+            <a href='index.php?action=suppEtab&id=<?= $etab['id'];?>'>Supprimer</a></td>
          </tr>
       <?php endforeach ?>
 

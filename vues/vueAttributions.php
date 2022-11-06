@@ -26,7 +26,7 @@
         <?php foreach($groupes[$i] as $groupe): ?>
 
             <tr class='ligneTabQuad'>
-                <td width='65%' align='left'> <?=$groupe['nom']." (".$groupe['nombrePersonnes']." membres)"?></td>
+                <td width='65%' align='left'> <?='['.$groupe['nomPays'].'] '.$groupe['nom']." (".$groupe['nombrePersonnes']." membres)"?></td>
                 <td width='65%' align='left'> <?=$groupe['nombreChambres']?></td>
             </tr>
 
