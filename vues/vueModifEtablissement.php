@@ -1,4 +1,4 @@
-<?php $titre = 'Modification'; ?>
+<?php $titre = 'Modification Etablissement' + $etab['id']; ?>
 <?php ob_start(); ?>
 
 <!-- CONTENU DE LA VUE AVEC LES VARIABLES PHP -->
