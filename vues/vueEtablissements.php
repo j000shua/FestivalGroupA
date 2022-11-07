@@ -13,13 +13,21 @@
       <?php foreach ($etabs as $etab): ?>
          
          <tr class='ligneTabNonQuad'>
-            <td> <?= $etab['nom']."-".$etab['id']?> </td>
-
-            <td width='16%' align='center'> 
-            <a href='index.php?action=details&id=<?= $etab['id'];?>'>Voir détail</a>
+            <td> 
+               <?= $etab['nom']."-".$etab['id']?>
             </td>
 
             <td width='16%' align='center'> 
+               <a href='index.php?action=details&id=<?= $etab['id'];?>'>Voir détail</a>
+            </td>
+
+            <td width='16%' align='center'> 
+               <a href='index.php?action=modifier&id=<?= $etab['id'];?>'>Modifier</a>
+            </td>
+
+            <!-- <td width='16%' align='center'> 
+               <a href='index.php?action=supprimer&id=<?= $etab['id'];?>'>Supprimer</a>
+            </td> -->
             <a href='index.php?action=modifEtab&id=<?= $etab['id'];?>'>Modifier</a></td>
 
             <td width='16%' align='center'> 

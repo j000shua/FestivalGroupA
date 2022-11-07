@@ -28,6 +28,11 @@ function etabDetail($id){  // action details
     require 'vues/vueDetailEtablissement.php';
 }
 
+function creerEtab(){ // action créer
+    $create = updateCreerEtab();
+    require 'vues/vueCreerEtablissement.php';
+}
+
 function modifEtab($id){
 
     $tabCivilite=array("M.","Mme","Melle");
@@ -44,13 +49,6 @@ function modifEtab($id){
     require "vues/vueModifEtablissement.php";
 }
 
-function creerEtab(){
-
-    $tabCivilite=array("M.","Mme","Melle");
-
-    require "vues/vueCreerEtablissement.php";
-}
-
 function suppEtab($id){
 
     $etab = getEtabsDetails($id);
@@ -62,7 +60,6 @@ function suppEtab($id){
     else{
         require "vues/vueSupprimerEtablissement.php";
     }
-
 }
 
 ///////// ATTRIBUTIONS //////////////
@@ -127,14 +124,11 @@ function nbAttrib($idEtab, $idGroupe){
         else
             updateAttrib($idEtab, $idGroupe, $nbChambres, 'U');
     }
-    //
 
     $nbSelect = getNbChambresRestantes($idEtab);
-    if($nbSelect == 0):
+    if($nbSelect == 0)
         $nbSelect = getNbAttrib($idEtab, $idGroupe)-1;
-    endif;
     
     require 'vues/vueNombreAttributions.php';
-}    
-
+}
 ?>
