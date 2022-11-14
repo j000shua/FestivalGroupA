@@ -19,7 +19,7 @@
    class='tabNonQuadrille'>
    
       <tr class='enTeteTabNonQuad'>
-         <td colspan='3'>lezgooo</td>
+         <td colspan='3'>Création établissement</td>
       </tr>
      <!--  <tr>
          <td><input type='hidden' name='id'></td>
